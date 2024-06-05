@@ -1,0 +1,97 @@
+<!-- Created by Kyle Darren -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bouncing balls 2</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<style>
+
+html,
+body {
+    overscroll-behavior-y: contain;
+}
+
+#canvas {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0%;
+  left: 0%;
+}
+</style>
+<body>
+  <canvas id="canvas"></canvas> 
+  <script>
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  var parArray = [];
+  
+  class Particle {
+    constructor(x, y, radius, color) {
+      this.x = x;
+      this.y = y;
+      this.radius = radius;
+      this.color = color;
+      this.directionX = 1;
+      this.weight = 3;
+    }
+    update() {
+      this.y += this.weight;
+      this.x += this.directionX;
+      if (this.x >= canvas.width - this.radius) {
+        this.directionX = -3;
+      } else if (this.y >= canvas.height - this.radius) {
+        this.weight = -3;
+      } else if (this.x <= 0 + this.radius) {
+        this.directionX = 3;
+      } else if (this.y <= 0 + this.radius) {
+        this.weight = 3;
+      }
+    }
+    draw() {
+      ctx.fillStyle = this.color;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.closePath();
+      ctx.fill();
+    }
+  }
+  
+  window.addEventListener("touchmove", function() {
+    add(event);
+  });
+ 
+ window.addEventListener("touchstart", function() {
+    add(event);
+  });
+  
+  function add(event) {
+      var x = event.touches[0].clientX;
+      var y = event.touches[0].clientY;
+      var rancol = Math.floor(Math.random() * 255);
+      parArray.push(new Particle(x, y, 5, "rgb(25,25,67)"));
+  }
+ 
+  
+  console.log(parArray);
+  function move() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+  for (let i = 0; i < parArray.length; i++) {
+      parArray[i].update();
+      parArray[i].draw();
+    }
+  requestAnimationFrame(move);
+  }
+  
+  move();
+  
+  </script>
+  </body>
+  </html>
