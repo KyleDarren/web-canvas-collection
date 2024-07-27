@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Speed up</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<style>
+#canvas {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0%;
+  left: 0%;
+}
+
+#hide {
+  display: none;
+}
+</style>
+<body>
+  <div id="hide">
+  <img id="imgs" src="https://dl.dropbox.com/s/48c98ppn0u8lnxj/robot.png?dl=0" height="50" width="50">
+  </div>
+  <canvas id="canvas"></canvas> 
+<script>
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  
+  canvas.addEventListener("touchmove", function() {
+    move(event);
+  });
+  canvas.addEventListener("touchstart", function() {
+    move(event);
+  });
+  
+  function move(event) {
+    var x = event.touches[0].clientX;
+    var y = event.touches[0].clientY;
+    var img = document.getElementById("imgs");
+    ctx.drawImage(img, x-50, y-50, 100, 100);
+  event.preventDefault();
+  }
+  </script>
