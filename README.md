@@ -8,7 +8,7 @@
    
 3. bloody-canvas.html
    
-   Balls' fall speed increases gradually but new balls created starts at a constant speed
+   Balls' fall speed increases gradually but every new balls created starts at a constant speed
    
    <img src="https://github.com/user-attachments/assets/c81f7682-77d1-46d1-83ac-5013e0b95fe0" alt="Description" width="200" height="300">
    
