@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Speed up</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<style>
+#canvas {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0%;
+  left: 0%;
+}
+</style>
+<body>
+  <img id="img" src="robot.png" height="0" width="0">
+  <canvas id="canvas"></canvas> 
+  <script>
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  let particlesArray = [];
+  let numberOfParticles = 300;
+  
+  class Particle {
+    constructor(x, y) {
+      this.x = x;
+      this.y = y;
+      this.size = 20;
+      this.weight = 2;
+      this.directionX = 0;
+    }
+    update() {
+      if (this.y > canvas.height) {
+        this.y = 0 - this.size;
+       // this.weight = 2;
+        this.x = Math.random() * canvas.width;
+      }
+      this.weight += 0.1;
+      this.y += this.weight;
+      this.x += this.directionX;
+    }
+    draw() {
+      ctx.fillStyle = "#00f130";
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.closePath();
+      ctx.fill();
+    }
+  }
+  function init() {
+    for (let i = 0; i < numberOfParticles; i++) {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      particlesArray.push(new Particle(x, y));
+    }
+  }
+  init();
+
+  function animate() {
+    ctx.fillStyle = "rgb(0, 0, 0, 0.5)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    for (let i = 0; i < particlesArray.length; i++) {
+      particlesArray[i].update();
+      particlesArray[i].draw();
+    }
+    
+    requestAnimationFrame(animate);
+  }
+  animate();
+  </script>
+  </body>
+  
