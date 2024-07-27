@@ -1,7 +1,7 @@
 # Web Canvas Collection
 
 1. accelerating-balls.html
-   ![Screenshot_20240727-212944_1](https://github.com/user-attachments/assets/c94dc4ed-e718-4fd6-b3ca-5f66e4040595)
+   <img src="https://github.com/user-attachments/assets/c94dc4ed-e718-4fd6-b3ca-5f66e4040595" alt="Description" width="300" height="200">
 3. bloody-canvas.html
    ![Screenshot_20240727-213640_1](https://github.com/user-attachments/assets/c81f7682-77d1-46d1-83ac-5013e0b95fe0)
 5. bouncing-ball-slide.html
