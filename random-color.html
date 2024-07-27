@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Example Code</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="index.css">
+  <script src="index.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <style> 
+    body {
+      background-color: #c0eaf5;
+    }
+    .btn1, .btn2 {
+      position: absolute;
+      top: 80%;
+      height: 50px;
+      width: 120px;
+      border-radius: 30px;
+      background: radial-gradient(#dae36e, #8de270);
+      border: 1px solid black;
+      font-family: Courier New;
+      font-weight: bold;
+      font-size: 20px;
+      transition-duration: 0.3s;
+      outline: none;
+    }
+    .btn1 {
+      left: 30px;
+    }
+    .btn2 {
+      left: 210px;
+    }
+    .btn1:hover, .btn2:hover {
+      box-shadow: 1px 1px 19px 8px #a2ff85;
+    }
+  </style>
+</head>
+<body>
+  <button class="btn1" onclick="intrv()">Start</button>
+  <button class="btn2" onclick="stop()">Stop</button>
+  <canvas id="canv" height="450px" width="340px" style="border:solid black 1px;"></canvas>
+  <script>
+    function intrv() {
+      myVar = setInterval(canx, 10);
+    }
+
+    function stop() {
+      clearInterval(myVar);
+    }
+
+    function canx() {
+      var cav = document.getElementById("canv");
+      var ctx = cav.getContext("2d");
+      var ran = Math.floor(Math.random() * 450);
+      var ran1 = Math.floor(Math.random() * 340);
+      var ran2 = Math.floor(Math.random() * 450);
+      var ran3 = Math.floor(Math.random() * 340);
+      var ranc = Math.floor(Math.random() * 8);
+      var col = ["yellow", "red", "green", "orange", "blue", "indigo", "violet"];
+      var rancol = col[ranc];
+      ctx.beginPath();
+      ctx.lineWidth = "1000";
+      ctx.strokeStyle = rancol;
+      ctx.moveTo(ran1, ran);
+      ctx.lineTo(ran2, ran3);
+      ctx.stroke();
+    }
+  </script>
+</body>
+</html>
