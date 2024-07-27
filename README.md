@@ -14,7 +14,7 @@
    
 5. bouncing-ball-slide.html
    
-   Slide your finger to the screen to create balls that moves diagonally and bounce when it hits the screen boundary
+   Slide your finger to the screen to create balls that move diagonally and bounce when they hit the screen boundary
    
    <img src="https://github.com/user-attachments/assets/127b7555-a111-409a-80c2-7ac7d64b1e3a" alt="Description" width="200" height="300">
    
@@ -50,7 +50,7 @@
     
 17. bouncing-ball-tap.html
     
-    Tap the screen to create balls that moves diagonally and bounce when it hits the screen boundary
+    Tap the screen to create balls that move diagonally and bounce when they hit the screen boundary
     
     <img src="https://github.com/user-attachments/assets/7e31145f-6951-46ea-b28d-962609159344" alt="Description" width="200" height="300">
     
